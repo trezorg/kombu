@@ -307,7 +307,8 @@ class Hub:
 
             poll_timeout = fire_timers(propagate=propagate) if scheduled else 1
 
-            for tick_callback in on_tick:
+            on_tick_immutable = on_tick.copy()
+            for tick_callback in on_tick_immutable:
                 tick_callback()
 
             #  print('[[[HUB]]]: %s' % (self.repr_active(),))
